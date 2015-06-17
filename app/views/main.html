@@ -1,0 +1,9 @@
+<div class="row">
+    <h3>messages</h3>
+    <div class="col-md-12">
+        <div ng-repeat="message in messages track by $index">
+            <p class="bg-{{message.class}}" ng-bind-html="message.contents | imageOrTextFilter">
+            </p>
+        </div>
+    </div>
+</div>
