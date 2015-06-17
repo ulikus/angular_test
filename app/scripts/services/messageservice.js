@@ -9,11 +9,6 @@
  */
 angular.module('messagesApp')
   .service('messageService', function ($http) {
-    var service = {
-      messages: {},
-      load: load
-    };
-
     function load() {
       var expiry = new Date().getTime();
       $http.get('/data/messages.json').success(function(data) {
@@ -21,10 +16,15 @@ angular.module('messagesApp')
           d.added = expiry;
         });
         service.messages = data;
-      }).error(function(data) {
+      }).error(function() {
         console.log('something went wrong');
       });
     }
+
+    var service = {
+      messages: {},
+      load: load
+    };
 
     return service;
   });
